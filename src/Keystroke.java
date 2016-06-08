@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -148,12 +149,8 @@ public class Keystroke extends JFrame implements KeyListener{
 			test[0]=time;
 			test[1]=totalHold;
 
-			//System.out.println(test[0]+"  "+test[1]+"  "+numOfKeys+"  "+space);
-
 			if(space!=2 || time>5.0 || totalHold>2.0 || numOfKeys<20 || numOfKeys>22)
 				termination++;
-
-			//System.out.println(termination);
 
 			textFile1=new File("Speed Test Cases.txt");
 			textFile2=new File("Hold Time Test Cases.txt");
@@ -175,6 +172,7 @@ public class Keystroke extends JFrame implements KeyListener{
 				Unauthorized();
 			else if(termination==0)
 				Authorized();
+			//giveTestCases(test[0],test[1]);
 		}
 
 		catch(Exception e){
@@ -187,6 +185,8 @@ public class Keystroke extends JFrame implements KeyListener{
 		Keystroke b=new Keystroke();
 		b.runAuthorized(displayMode);
 		authorized=true;
+		//String message="Welcome Ajeet Singh";
+		//JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	private void Unauthorized(){
@@ -194,6 +194,8 @@ public class Keystroke extends JFrame implements KeyListener{
 		Keystroke b=new Keystroke();
 		b.runUnauthorized(displayMode);
 		authorized=false;
+		// String message="Unauthoriezd User";
+		 //JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",JOptionPane.ERROR_MESSAGE);
 	}
 
 	private Screen screen;
@@ -223,20 +225,18 @@ public class Keystroke extends JFrame implements KeyListener{
 	}
 
 	public void loadPicsUnauthorized(){
-		bgU=new ImageIcon("E:\\Unauthorized.jpg").getImage();
-		//System.out.println("%%%%%");
+		bgU=new ImageIcon("Unauthorized.jpg").getImage();
 	}
 
 	public void loadPicsAuthorized(){
-		bgA=new ImageIcon("E:\\Authorized.jpg").getImage();
-		//System.out.println("****");
+		bgA=new ImageIcon("Authorized.jpg").getImage();
 	}
 
 	public void movieLoopAuthorized(){
 		long startingTime=System.currentTimeMillis();
 		long cumTime=startingTime;
 
-		while(cumTime-startingTime<5000){
+		while(cumTime-startingTime<2000){
 			long timePassed=System.currentTimeMillis()-cumTime;
 			cumTime+=timePassed;
 
@@ -254,7 +254,7 @@ public class Keystroke extends JFrame implements KeyListener{
 		long startingTime=System.currentTimeMillis();
 		long cumTime=startingTime;
 
-		while(cumTime-startingTime<5000){
+		while(cumTime-startingTime<2000){
 			long timePassed=System.currentTimeMillis()-cumTime;
 			cumTime+=timePassed;
 
@@ -276,7 +276,7 @@ public class Keystroke extends JFrame implements KeyListener{
 		g.drawImage(bgA,0,0,null);
 	}
 
-	/*private void giveTestCases(double time, double hold) throws FileNotFoundException {
+	private void giveTestCases(double time, double hold) throws FileNotFoundException {
 		Scanner sc4=new Scanner(new File("shuffledSpeed.txt"));
 		Scanner sc5=new Scanner(new File("shuffledHold.txt"));
 		Scanner sc6=new Scanner(new File("shuffledY.txt"));
@@ -285,8 +285,8 @@ public class Keystroke extends JFrame implements KeyListener{
 		userInput[0]=time;
 		userInput[1]=hold;
 
-		//Keystroke.tryFunction(sc4,sc5,sc6,userInput);
-	}*/
+		Keystroke.tryFunction(sc4,sc5,sc6,userInput);
+	}
 
 	private class ButtonClickListener implements ActionListener {
 		public void actionPerformed(ActionEvent ae) {
@@ -317,7 +317,7 @@ public class Keystroke extends JFrame implements KeyListener{
 		}
 	}
 
-	/*private static void tryFunction(Scanner sc1, Scanner sc2, Scanner sc3,double[] userInput) {
+	private static void tryFunction(Scanner sc1, Scanner sc2, Scanner sc3,double[] userInput) {
 		int anomalyNum=50;
 		int correctNum=500;
 		int m=anomalyNum+correctNum;
@@ -489,7 +489,7 @@ public class Keystroke extends JFrame implements KeyListener{
 			System.out.println("You are not AJEET");
 		else
 			System.out.println("You are AJEET");
-	}*/
+	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Keystroke ks = new Keystroke();
