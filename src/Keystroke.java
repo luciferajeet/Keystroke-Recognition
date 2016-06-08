@@ -421,7 +421,6 @@ public class Keystroke extends JFrame implements KeyListener{
 			double den=2*sigma2[i];
 			double pow=numerator/den;
 			double power=-1*pow;
-			power=power/1000;
 			System.out.println(power+"POWER");
 			double secondPart=Math.exp(power);
 			p[i]=secondPart/denominator;
